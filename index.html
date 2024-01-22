@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            animation: none;
+            background: url('background-image-url.jpg') center/cover no-repeat; /* Set your love background image */
+            color: #333; /* Set text color to a readable color */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+        }
+        #header {
+            font-size: 36px;
+            color: #ff007f;
+            margin-bottom: 20px;
+        }
+        #message {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+        #yay {
+            font-size: 40px;
+            font-weight: bold;
+            color: #fff; /* Set text color to white */
+            margin-bottom: 20px;
+        }
+        .response-button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 0 10px;
+        }
+        #yes-button, #no-button {
+            background-color: #ffcc00;
+            color: #333;
+            border: none;
+        }
+
+        @keyframes discoLights {
+            0%, 20%, 40%, 60%, 80%, 100% {
+                background-color: #ffcc00;
+            }
+            10%, 30%, 50%, 70%, 90% {
+                background-color: #ff007f;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="header">Bumblebee, will you be my Valentine?</div>
+        <div id="message">I would be honored if you'd be my Valentine. What do you say?</div>
+        <div id="yay">Yaaaaaay!</div>
+        <div class="btn-group" id="button-container">
+            <button class="btn response-button" id="yes-button" onclick="respond('yes')">Yes</button>
+            <button class="btn response-button" id="no-button" onclick="teleportNo()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function respond(answer) {
+            if (answer === 'yes') {
+                document.body.style.animation = 'discoLights 3s infinite';
+                document.getElementById('header').innerHTML = '';
+                document.getElementById('message').innerHTML = '';
+                document.getElementById('yay').innerHTML = '<b style="color: #fff;">Yaaaaaay!</b>';
+                document.getElementById('button-container').style.display = 'none';
+            } else {
+                alert('Maybe next time. Happy Valentine\'s Day!');
+            }
+        }
+
+        function teleportNo() {
+            var noButton = document.getElementById('no-button');
+            var newX = Math.random() * (window.innerWidth - noButton.clientWidth);
+            var newY = Math.random() * (window.innerHeight - noButton.clientHeight);
+            noButton.style.left = newX + 'px';
+            noButton.style.top = newY + 'px';
+        }
+    </script>
+</body>
+</html>
